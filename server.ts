@@ -24,10 +24,11 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-    origin: ["https://foodora-v1.vercel.app", "http://localhost:5173"] ,
+    origin: ["https://foodora-v1.vercel.app", "http://localhost:5173"],
     credentials: true
 }
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 // api
 app.use("/api/v1/user", userRoute);
