@@ -8,7 +8,7 @@ import userRoute from "./routes/user.route";
 import restaurantRoute from "./routes/restaurant.route";
 import menuRoute from "./routes/menu.route";
 import orderRoute from "./routes/order.route";
-import path from "path";
+// import path from "path";
 
 dotenv.config();
 
@@ -16,7 +16,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const DIRNAME = path.resolve();
+// const DIRNAME = path.resolve();
 
 // default middleware for any mern project
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -27,7 +27,7 @@ const corsOptions = {
     origin: ["https://foodora-v1.vercel.app", "http://localhost:5173"],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    credentials: true,
 }
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
@@ -41,10 +41,10 @@ app.use("/", (req, res) => {
     res.send("Hello world!");
   });
 
-app.use(express.static(path.join(DIRNAME,"/client/dist")));
-app.use("*",(_,res) => {
-    res.sendFile(path.resolve(DIRNAME, "client","dist","index.html"));
-});
+// app.use(express.static(path.join(DIRNAME,"/client/dist")));
+// app.use("*",(_,res) => {
+//     res.sendFile(path.resolve(DIRNAME, "client","dist","index.html"));
+// });
 
 app.listen(PORT, () => {
     connectDB();
