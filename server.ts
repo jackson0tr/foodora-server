@@ -34,6 +34,9 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/restaurant", restaurantRoute);
 app.use("/api/v1/menu", menuRoute);
 app.use("/api/v1/order", orderRoute);
+app.use("/", (req, res) => {
+    res.send("Hello world!");
+  });
 
 app.use(express.static(path.join(DIRNAME,"/client/dist")));
 app.use("*",(_,res) => {
