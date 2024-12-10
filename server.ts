@@ -16,7 +16,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const DIRNAME = path.resolve();
+// const DIRNAME = path.resolve();
 
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -49,10 +49,10 @@ app.use("/", (req, res) => {
     res.send("Hello world!");
   });
 
-app.use(express.static(path.join(DIRNAME,"/client/dist")));
-app.use("*",(_,res) => {
-    res.sendFile(path.resolve(DIRNAME, "client","dist","index.html"));
-});
+// app.use(express.static(path.join(DIRNAME,"/client/dist")));
+// app.use("*",(_,res) => {
+//     res.sendFile(path.resolve(DIRNAME, "client","dist","index.html"));
+// });
 
 app.listen(PORT, () => {
     connectDB();
